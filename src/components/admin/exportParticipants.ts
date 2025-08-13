@@ -91,7 +91,7 @@ export function exportParticipantsToPDF(participants, columns, filename = 'Dafta
     tableLineWidth: 0.5,
     tableLineColor: [44, 62, 80],
     theme: 'grid',
-    didDrawPage: (dataArg) => {
+    didDrawPage: () => {
       // Hanya halaman pertama, judul besar
       if (doc.getCurrentPageInfo().pageNumber === 1) {
         doc.setFontSize(18);

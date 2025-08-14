@@ -4,6 +4,9 @@ FROM node:20-alpine AS builder
 # Set working directory
 WORKDIR /app
 
+# Set env langsung (hardcode)
+ENV NEXT_PUBLIC_API_BASE_URL=https://api-college.youthmultiply.com
+
 # Copy package files and install dependencies
 COPY package.json package-lock.json* pnpm-lock.yaml* yarn.lock* ./
 RUN npm install
@@ -17,6 +20,9 @@ RUN npm run build
 # Production image
 FROM node:20-alpine AS runner
 WORKDIR /app
+
+# Set env di runtime juga (hardcode)
+ENV NEXT_PUBLIC_API_BASE_URL=https://api-college.youthmultiply.com
 
 # Install only production dependencies
 COPY package.json package-lock.json* pnpm-lock.yaml* yarn.lock* ./

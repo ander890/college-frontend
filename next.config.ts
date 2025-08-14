@@ -1,12 +1,12 @@
-import type { NextConfig } from 'next';
-import type { Configuration } from 'webpack';
+import type { NextConfig } from "next";
+
 
 const nextConfig: NextConfig = {
   assetPrefix: process.env.NEXT_PUBLIC_ASSET_PREFIX || 'https://college.youthmultiply.com',
-  webpack(config: Configuration) {
-    config.module?.rules?.push({
+  webpack(config) {
+    config.module.rules.push({
       test: /\.svg$/,
-      use: ['@svgr/webpack'],
+      use: ["@svgr/webpack"],
     });
     return config;
   },

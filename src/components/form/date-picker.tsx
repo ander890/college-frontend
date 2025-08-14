@@ -57,7 +57,9 @@ export default function DatePicker({
           autoComplete="off"
           defaultValue={value || ''}
           onBlur={e => {
-            if (typeof onChange === 'function') onChange([], e.target.value, undefined, e);
+            if (typeof onChange === 'function' && fpRef.current) {
+              onChange([], e.target.value, fpRef.current, e);
+            }
           }}
         />
         <button
